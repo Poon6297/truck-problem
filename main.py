@@ -9,7 +9,9 @@ UNLIMITED = 999999999
 n = input("Enter n: ")
 desertCampList=[]
 
-
+##############
+# 3 is needed to have an effective move, 1 to go, 1 to store, 1 to come back
+##############
 
 # DIRECTION #
 # 0 = left  #
@@ -79,7 +81,7 @@ def checkWinningMove(truck,n,desertCampList):
 
 def checkSufficient(n,desertCamp,id):
 	print("ID :" + str(id) + "only has count: " + str(desertCamp.oilCount))
-	# if(desertCamp.oilCount >= (3+id)): #ensures that truck will have enough to traverse back to base camp
+	# if(desertCamp.oilCount >= (3+id)): #ensures that truck will have enough to traverse back to base camp, bruteforce technique
 	if(desertCamp.oilCount >= (3**(n-id-2)-largestIDTravelCount*3)): #more efficient algorithm but DOESN'T MAKE IT FASTER???
 		return True
 	else:

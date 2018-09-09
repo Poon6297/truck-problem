@@ -31,6 +31,7 @@ An array is used to calculate each required oil number, as the current camp's oi
 
 ```winningCondition[n-3] = 3
 	for i in range(n-4,0,-1):
-		winningCondition[i]=(winningCondition[i+1]*3) - 1```
+		winningCondition[i]=(winningCondition[i+1]*3) - 1
+```
   
  The array calculates for each unit of oil, 3 is required to transport it, except for the last unit of oil. 

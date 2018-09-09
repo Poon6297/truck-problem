@@ -16,5 +16,21 @@ The Task
 Write a Python program or any other language of your choice, that starts from the starting state (truck in base camp) and moves according to the rules until it reaches the goal state (truck in target camp). 
 For this, you have to adapt the search algorithms and write a Desert class. 
 [Hint]: You can use the breadth- first-search for this.
+## Assumptions
 
+Each desert camp is the same, having to unload all and pick up with a maximum of 3.
 
+## Algorithm
+
+So the most efficient way would be to make every move count.
+Calculate the total amount of fuel needed for the truck to traverse through the whole camp, and gather it all at once.
+
+Each unit oil transported needs 3 units (if truck has to go back) and 2 units (if truck has gathered the last unit and does not need to travel back)
+
+An array is used to calculate each required oil number, as the current camp's oil requirement is dependent on the next camp's oil requirement.
+
+```winningCondition[n-3] = 3
+	for i in range(n-4,0,-1):
+		winningCondition[i]=(winningCondition[i+1]*3) - 1```
+  
+ The array calculates for each unit of oil, 3 is required to transport it, except for the last unit of oil. 

@@ -6,8 +6,9 @@
 from classes import *
 
 UNLIMITED = 999999999
-n = input("Enter n: ")
+n = int(input("Enter n: "))
 desertCampList=[]
+ready = 0
 
 ##############
 # 3 is needed to have an effective move, 1 to go, 1 to store, 1 to come back
@@ -17,6 +18,12 @@ desertCampList=[]
 # 0 = left  #
 # 1 = right #
 
+winningCondition=[0]*(n+1) #creates an array to dynamically calculate the amount of oil required
+for i in range(n-2,n+1,1):
+	winningCondition[i] = 0
+winningCondition[n-3] = 3
+for i in range(n-4,0,-1):
+	winningCondition[i]=(winningCondition[i+1]*3) - 1
 
 class Truck:
 	oilCount = 0
@@ -43,7 +50,7 @@ class Truck:
 			self.id -= 1
 		self.oilCount -= 1
 		self.unload()
-		# print("Bob is currently at " + str(self.id))
+		print("Bob is currently at " + str(self.id))
 
 
 class DesertCamp:
@@ -82,7 +89,7 @@ def checkWinningMove(truck,n,desertCampList):
 def checkSufficient(n,desertCamp,id):
 	print("ID :" + str(id) + "only has count: " + str(desertCamp.oilCount))
 	# if(desertCamp.oilCount >= (3+id)): #ensures that truck will have enough to traverse back to base camp, bruteforce technique
-	if(desertCamp.oilCount >= (3**(n-id-2)-largestIDTravelCount*3)): #more efficient algorithm but DOESN'T MAKE IT FASTER???
+	if(desertCamp.oilCount >= (3**(n-id-2)-1)): #more efficient algorithm but DOESN'T MAKE IT FASTER???
 		return True
 	else:
 		return False
@@ -97,8 +104,8 @@ def checkWin(truck,n):
 
 start(n,desertCampList)
 bob = Truck()
-largestIDTravelled = 0
-largestIDTravelCount = 0 
+
+
 
 while(1):
 	checkWinningMove(bob,n,desertCampList)
@@ -107,6 +114,7 @@ while(1):
 			print("ID :" + str(i) + "only has total count: " + str(desertCampList[i].totalOilCount))
 		break
 	elif(checkSufficient(n,desertCampList[bob.id],bob.id)):
+		ready = 1
 		bob.move(1)
 	else:
 		bob.move(0)

@@ -8,18 +8,18 @@ ready = False
 #
 #
 # DIRECTION #
-# 0 = left  #
-# 1 = right #
+# 0 = backwards  #
+# 1 = forwards #
 #
 ##############
 
 
 n = int(input("Enter n: "))
-winningCondition=[0]*(n+1) #creates an array to dynamically calculate the amount of oil required
+winningCondition=[0]*(n+1) 
 
-setWinningCondition(n,winningCondition)
-start(n,desertCampList)
-bob = Truck()
+setWinningCondition(n,winningCondition) #creates an array to dynamically calculate the amount of oil required
+start(n,desertCampList) #creates each desertCamp object
+bob = Truck() #bob is my favourite truck
 # for i in range(n+1):
 # 	print(winningCondition[i])
 
@@ -31,7 +31,7 @@ while(1):
 		bob.move(1)
 		if(checkWin(bob,n)):
 			for i in range(n):
-				print("ID :" + str(i) + "only has total count: " + str(desertCampList[i].totalOilCount))
+				print("ID :" + str(i) + "only has total count: " + str(desertCampList[i].totalOilCount)) #summarises max count of each oil, stats stuff
 		break
 	if(ready == True):
 		while(desertCampList[bob.id].oilCount>3): #moves all oil to next desert camp

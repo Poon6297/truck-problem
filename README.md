@@ -25,11 +25,12 @@ Each desert camp is the same, having to unload all and pick up with a maximum of
 So the most efficient way would be to make every move count.
 Calculate the total amount of fuel needed for the truck to traverse through the whole camp, and gather it all at once.
 
-Each unit oil transported needs 3 units (if truck has to go back) and 2 units (if truck has gathered the last unit and does not need to travel back)
+Each unit oil transported needs 3 units (if truck has to go back) and 2 units (if truck has gathered the last unit and does not need to travel back). Last 3 camps do not have to take this into consideration.
 
 An array is used to calculate each required oil number, as the current camp's oil requirement is dependent on the next camp's oil requirement.
 
-```winningCondition[n-3] = 3
+```
+winningCondition[n-3] = 3
 	for i in range(n-4,0,-1):
 		winningCondition[i]=(winningCondition[i+1]*3) - 1
 ```
@@ -40,7 +41,7 @@ A ready flag is used to indicate whether the truck has gathered sufficient oil, 
 
 
 ```
-if((n - truck.id)==3 & desertCampList[truck.id].oilCount>=3):
+	if((n - truck.id)==3 & desertCampList[truck.id].oilCount>=3):
 		return True
 ```
-The code above is used to check whether the truck has enough oil to traverse through the rest of the journey without dropping off oil (last 3 camps). 
+The code above is used to check whether the truck has enough oil to traverse through the rest of the journey without dropping off any oil (last 3 camps). 

@@ -34,4 +34,12 @@ An array is used to calculate each required oil number, as the current camp's oi
 		winningCondition[i]=(winningCondition[i+1]*3) - 1
 ```
   
- The array calculates for each unit of oil, 3 is required to transport it, except for the last unit of oil. 
+The array calculates for each unit of oil, 3 is required to transport it, except for the last unit of oil. 
+
+A ready flag is used to indicate whether the truck has gathered sufficient oil, if so, the truck starts transporting it camp by camp till it reaches the target camp, never returning to base camp again.
+
+
+```	if((n - truck.id)==3 & desertCampList[truck.id].oilCount>=3):
+		return True
+```
+The code above is used to check whether the truck has enough oil to traverse through the rest of the journey without dropping off oil (last 3 camps). 

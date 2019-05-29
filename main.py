@@ -42,8 +42,9 @@ while(1):
 		bob.move(1)
 		if(checkSufficient(winningCondition,bob,desertCampList)==True): #if oil is sufficient for truck to traverse till the end
 			ready = True
+			bob.move(0)
+			bob.move(1)
 		else:
-			# time.sleep(10)
 			bob.move(0)
 
 

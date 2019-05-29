@@ -64,7 +64,7 @@ def checkWinningMove(truck,n,desertCampList): #returns true if the truck can go 
 		return False
 
 def checkSufficient(winningCondition,bob,desertCampList): #returns true if the total oil count to get to target camp is hit
-	if(desertCampList[1].oilCount>=winningCondition[1]):
+	if(desertCampList[1].oilCount > winningCondition[1]):
 		return True
 	else:
 		return False
@@ -80,6 +80,7 @@ def checkWin(truck,n): #returns true if truck is at target camp
 def setWinningCondition(n,winningCondition): 	#calculates the total oil count requirement at each camp to get to target camp
 	for i in range(n-2,n+1,1):
 		winningCondition[i] = 0
-	winningCondition[n-3] = 3
+	winningCondition[n-3] = 1
 	for i in range(n-4,0,-1):
-		winningCondition[i]=(winningCondition[i+1]*3) - 1
+		winningCondition[i]=(winningCondition[i+1]*3) + 1
+	print(winningCondition)
